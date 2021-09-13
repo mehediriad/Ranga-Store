@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ranga Store - Fixed by Mehedi Riad</title>
+
+  
+
+
   <link rel="stylesheet" href="./css/style.css" />
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -15,10 +19,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+  
 </head>
 
 <body>
   <header></header>
+
   <main class="main">
     <div class="search-field">
       <div class="search-box">
@@ -29,6 +35,27 @@
         </button>
       </div>
     </div>
+
+    <!-- product details area start -->
+
+    <section id="product-details">
+
+      <div class="product-info">
+        <h5 class='product-text-right'><button onclick="closeBtn()"><span id="close-btn">X</span></button></h5>
+        <div id="single-product-details">
+          
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+
+    <!-- product details area end -->
+     
+
     <div class="row">
       <div class="col-md-9 col-lg-9 col-sm-7">
         <div id="all-products" class="">
@@ -88,8 +115,13 @@
   </main>
   <footer></footer>
 
+
+
+  
   <!-- add javascript  file  -->
   <script src="./js/app.js"></script>
+
+
 </body>
 
 </html>

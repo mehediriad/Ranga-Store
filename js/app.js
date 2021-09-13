@@ -18,14 +18,74 @@ const showProducts = (products) => {
     <img class="product-image" src=${image}></img>
       </div>
       <h3>${product.title}</h3>
+      <div class = "rating-box" >
+        <h6 class = "text-muted">${product.rating.rate}/ 5</h6> 
+        <h6 class = "text-muted">${product.rating.count} Ratings</h6>
+      </div>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+
+
+      <button onclick="loadDetails(${product.id})"  id="details-btn" class="btn btn-danger">Details</button></div>
+
+    
+
       `;
     document.getElementById("all-products").appendChild(div);
   }
 };
+
+const loadDetails = productId =>{
+  
+  document.getElementById('product-details').style.display = 'block';
+  const url = `https://fakestoreapi.com/products/${productId}`
+  fetch(url)
+  .then(res => res.json())
+  .then(data => displayDetails(data))
+
+}
+const closeBtn = () =>{
+  document.getElementById('single-product-details').textContent = '';
+  document.getElementById('product-details').style.display = 'none';
+}
+
+
+
+const displayDetails = info =>{
+  
+  console.log(info)
+  const container = document.getElementById('single-product-details');
+  container.textContent = '';
+  const div = document.createElement('div');
+  div.innerHTML = `
+  <div class="single-product-info">
+  <div class="img-rating">
+      <div>
+        <img class="product-image" src=${info.image}></img>
+      </div>
+
+      <div class = "single-rating-box" >
+        <h2 class = "text-muted">${info.rating.rate}/ 5</h2> 
+        <h4 class = "text-muted">${info.rating.count} Ratings</h4>
+      </div>
+  </div>
+
+
+  <h3>${info.title}</h3>
+  
+  <small class = "text-muted category">Category: ${info.category}</small>
+  <p>${info.description}</p>
+  <h2>Price: $ ${info.price}</h2>
+  <button onclick="addToCart(${info.id},${info.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
+
+
+  
+  `
+  container.appendChild(div)
+}
+
+
 
 
 let count = 0;
